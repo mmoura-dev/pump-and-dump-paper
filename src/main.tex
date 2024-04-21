@@ -97,7 +97,7 @@
 	The pump-and-dump scheme has a long history in the stock market \citep{lamorgia2020}.
 	The subsequent subsection, "Pump-and-Dump on Traditional Stock Market" (see Subsection \ref{subsec_pump_def}) examines its operation within traditional stock markets.
 	Following this examination, the subsection "Pump-and-Dump on Cryptocurrency Markets" (see Subsection \ref{subsec_pump_in_crypto}) explains why cryptocurrency markets are susceptible to the scheme and how the scheme has been adapted.
-	By the end of this section, the subsection "Pump-and-Dump on Cryptocurrency as Anomalies of Time Series" (see Subsection \ref{subsec_pump_as_anomalies}) demonstrates the modeling of pump-and-dumps as anomalies within time series data and proposes methodologies for their detection.
+	By the end of this section, the subsection "Cryptocurrency Pump-and-Dump as Time Series Anomalies" (see Subsection \ref{subsec_pump_as_anomalies}) demonstrates the modeling of pump-and-dumps as anomalies within time series data and proposes methodologies for their detection.
 
 	\subsection{Pump-and-Dump on Traditional Stock Market}
 	\label{subsec_pump_def}
@@ -146,15 +146,21 @@
 	Within approximately half an hour, the cryptocurrency retraces to its pre-pump price and trading volume.
 	After that, the fraudsters release a review of the pump, cherry-picking data that supports the hypothesis of high profitability for scheme participants \citep{xu2019}.
 
-	Hence, a fundamental characteristic of pump-and-dump schemes within cryptocurrency markets is the establishment of publicly accessible groups, wherein every member is aware of the scheme.
+	Hence, a fundamental characteristic of pump-and-dump schemes within cryptocurrency markets is the establishment of publicly accessible groups, where every member is aware of the scheme.
 	The reason for participation stems from the promise of quick and substantial profits.
 	Additionally, group members are consider that individuals who join the pump through their social media advertisements are the scheme's victims, and their own profitability hinges only on how fast they are operating.
 	However, as shown by \citet{xu2019}, the majority of members ultimately fall victim to the scheme, purchasing at an already inflated price, while the orchestrators, who initiate buy and sell orders prior to the pump, enjoy almost guaranteed profits.
 
-	\subsection{Pump-and-Dump on Cryptocurrency as Anomalies of Time Series}
+	\subsection{Cryptocurrency Pump-and-Dump as Time Series Anomalies}
 	\label{subsec_pump_as_anomalies}
 
-	Lorem
+	The ultimate goal of a pump-and-dump scheme in cryptocurrency markets is to artificially inflate the price of a coin for profit.
+	However, due to the brief duration during which they can sustain the inflated price, the impact of such schemes on the price time series of the targeted coin is often perceived as an anomaly.
+	Anomaly detection constitutes a significant area of study within event detection literature, with certain methodologies already explored for detecting pump-and-dumps in cryptocurrency markets.
+
+	Two prominent studies have expored anomaly detection methodologies for cryptocurrency pump-and-dumps.
+	The first, conducted by \citet{kamps2018}, emphasized the utilization of unsupervised anomaly detection techniques, prompted by the scarcity of labeled data available at the time.
+	Addressing this challenge, \citet{lamorgia2020} contributed with a public labeled dataset, along with the implementation of classification-based anomaly detection methods.
 
 	\section{Trabalhos relacionados}
 	\label{sec_trab_relacionados}
