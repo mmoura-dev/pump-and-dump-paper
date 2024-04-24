@@ -15,6 +15,7 @@ jobs:
         with:
           root_file: main.tex
           working_directory: src
+          docker_image: tianon/latex
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
