@@ -20,4 +20,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: main.pdf
+          path: src/main.pdf
+          if-no-files-found: error
+          overwrite: true
