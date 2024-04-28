@@ -244,7 +244,29 @@
     \subsection{Data Preprocessing}
 	\label{subsec_met_preprocessing}
 	
-	A qualidade da explicação está intimamente ligada ao bom encadeamento deste capítulo. Isso significa dizer que se um diagrama for incorporado neste capítulo, cada elemento do diagrama precisa ser explicado. Por exemplo, se for utilizado um diagrama de classe, as principais classes e atributos devem ser apresentados, uma vez que cada uma das classes e cada atributo deve ser explicado no texto.
+	Our preprocessing consists mainly into transforming the historical trading data into time series.
+    The first step of the preprocessing is separate only the buy orders due to our main ideia of detect abnormal behavior of the buy orders.
+    Subsequently, we aggregate the US dollar price for each order using the data obtained in the Data Enrichment process (See Subsection \ref{subsec_met_enrichment}).
+
+    In the third stage, orders are aggregated into bins of an arbitrary number of seconds, a parameter of the method.
+    Subsequently, for each aggregation of orders, key metrics constituting the time series, such as average US dollar price, number of orders, and total volume in US dollars, are computed.
+    Finally, a label column is appended, indicating the bin in which the pump-and-dump event occurred.
+    This process yields the dataset illustrated in Table \ref{tab_timeseries}.
+
+    \begin{table}[!ht]
+        \centering
+        \caption{Example of time series after preprocessing}
+        \begin{tabular}{cccccc}
+            \toprule
+            \textbf{Datetime} & \textbf{Average Price} & \textbf{Volume} & \textbf{Orders} & \textbf{Event} \\
+            \midrule
+            2020-10-20 18:10:52 & 0.00666 & 198.069 & 34 & FALSE \\
+            2020-10-20 19:10:52 & 0.00666 & 180.427 & 29 & FALSE \\
+            2020-10-20 20:10:52 & 0.00678 & 320.316 & 71 & TRUE \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_timeseries}
+    \end{table}
 
     \subsection{Anomaly Detection}
 	\label{subsec_met_anomaly_detection}
