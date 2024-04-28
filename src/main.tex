@@ -91,7 +91,7 @@
 
 	\# Work structure. 
 	
-	\section{Theoretical Foundation}
+	\section{Background}
 	\label{sec_fund_teorica}
 
 	The pump-and-dump scheme has a long history in the stock market \citep{lamorgia2020}.
@@ -162,10 +162,25 @@
 	The first, conducted by \citet{kamps2018}, emphasized the utilization of unsupervised anomaly detection techniques, prompted by the scarcity of labeled data available at the time.
 	Addressing this challenge, \citet{lamorgia2020} contributed with a public labeled dataset, along with the implementation of classification-based anomaly detection methods.
 
-	\section{Trabalhos relacionados}
+	\section{Related Work}
 	\label{sec_trab_relacionados}
-	
-	Ao final da fundamentação teórica devem ser apresentados os trabalhos relacionados referentes soluções semelhantes para o problema definido. Os trabalhos relacionados demonstram o estado da arte do tema do trabalho \citep{wazlawick_metodologia_2017}. Descrevemos, resumidamente, os trabalhos e pesquisas já efetuados na área do tema do trabalho, indicando os estudos realizados e os resultados obtidos por seus autores. Esta elaboração deve ser obtida a partir de um mapa sistemático\footnote{Eventualmente esta seção pode ficar depois da avaliação experimental}. 
+
+	The research conducted by \citet{kamps2018} was one of the pioneering studies in the field of cryptocurrency pump-and-dump schemes.
+	It offered an initial formalization of these schemes and proposed a methodology for detecting them using anomaly detection algorithms.
+	Given the nature of pump-and-dump schemes and the limited availability of labeled data at the time, they come up with a detector for local anomalies based on unsupervised anomaly detection algorithms, focusing on recent historical data.
+
+	\citet{kamps2018} detector utilizes candlesticks with hourly intervals, incorporating data on open, highest, lowest, and close prices and volumes.
+	Their approach employs two anomaly thresholds based on transaction volume and coin price.
+	Events exceeding both thresholds are identified as pump-and-dump schemes.
+	Additionally, they proposed three threshold calculation configurations aimed at maximizing recall, maximizing precision, and balancing both metrics.
+	However, their study lacked established metrics due to the absence of ground truth in the dataset utilized.
+
+	In contrast, \citet{lamorgia2020} conducted a study centered on pump-and-dump activities operated by the group Big Pump Signal which mainly operated within the Binance exchange, representing the largest group identified by the researchers.
+	One of their key contributions is a labeled dataset derived from pump-and-dump schemes executed on the Binance exchange by the monitored groups.
+	This dataset was created utilizing the Binance API, enabling retrieval of every transaction within the complete trading pair history.
+
+	Another contribution from their study is an anomaly detection algorithm founded on classification methods.
+
 	
 	\section{Método}
 	\label{sec_metodo}
