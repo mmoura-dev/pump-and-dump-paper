@@ -179,7 +179,10 @@
 	One of their key contributions is a labeled dataset derived from pump-and-dump schemes executed on the Binance exchange by the monitored groups.
 	This dataset was created utilizing the Binance API, enabling retrieval of every transaction within the complete trading pair history.
 
-	Another contribution from their study is an anomaly detection algorithm founded on classification methods.
+	Another notable contribution of \citet{lamorgia2020} study is the development of an anomaly detection algorithm based on classification methods.
+	They analyze various types of features and utilize them as inputs for two distinct classifiers: Random Forest and Logistic Regression.
+	Furthermore, they present results for intervals of 5, 15, and 25 seconds of aggregated orders.
+	In the end, they conduct a comparative analysis with \citet{kamps2018}, applying their methodology to the dataset and demonstrating a notable enhancement in the F1 metric, from 60.5\% to 92.0\%, which are further explored in Section \ref{sec_aval_exp}.
 
 	
 	\section{Método}
