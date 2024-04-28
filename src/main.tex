@@ -190,10 +190,10 @@
 
 	The methodology section in this work covers the whole workflow applied to the data for the anomaly detection and is defined according to Figure \ref{fig_metodology_flow}.
 	It can be summarized in the following steps:
-	(A) Orders History Dataset;
-	(B) Data Enrichment;
-	(C) Data Preprocessing;
-	(D) Anomaly Detection.
+	    Orders History Dataset (See Subsection \ref{subsec_met_dataset});
+	    Data Enrichment (See Subsection \ref{subsec_met_enrichment});
+	    Data Preprocessing (See Subsection \ref{subsec_met_preprocessing});
+	    Anomaly Detection (See Subsection \ref{subsec_met_anomaly_detection}).
 	These steps are described in detail in the following subsections.
 
 	\begin{figure}[!ht]
@@ -205,8 +205,34 @@
 
     \subsection{Orders History Dataset}
 	\label{subsec_met_dataset}
-	
-	O desenvolvimento, juntamente com a avaliação experimental, é um dos núcleos do trabalho. O desenvolvimento compreende a modelagem e a elaboração da solução propriamente dita. Deve ser apresentado de forma ordenada e ampla, com o conteúdo relevante para a apresentação da solução a que o trabalho se propõe. Fica a cargo dos autores estabelecer a estrutura deste capítulo, bem como definir os elementos que devem ser utilizados para elaborar o desenvolvimento da solução.
+
+    Constructing a dataset of pump-and-dump events is a formidable challenge, necessitating longitudinal monitoring of the groups perpetrating the scheme.
+    To address this obstacle, the present study leverages datasets provided by \citet{lamorgia2020}.
+    Consequently, our investigation is centered on pump-and-dump occurrences within the Binance exchange.
+    By utilizing their resources, we acquired 339 datasets pertaining to Binance pump-and-dump events.
+
+    Each dataset has 14 days of historical trading data, encompassing 7 days prior to and 7 days following the event under analysis.
+    The dataset consists of trade records, including volume in Bitcoin, quantity, price, operation type (buy or sell), and UNIX timestamps.
+    A sample of the data is provided in Table \ref{tab_dataset_sample}.
+
+    \begin{table}[!ht]
+        \centering
+        \caption{Sample of historical trading data obtained from Binance API}
+        \begin{tabular}{cccccc}
+            \toprule
+            \textbf{Pair Symbol} & \textbf{Timestamp} & \textbf{Side} & \textbf{Price} & \textbf{Amount} & \textbf{Volume (BTC)} \\
+            \midrule
+            YOYOW/BTC & 1603217086 & SELL & 5.5e-07 & 1000 & 0.00055 \\
+            YOYOW/BTC & 1603217452 & BUY & 5.6e-07 & 48072 & 0.02692032 \\
+            YOYOW/BTC & 1603219189 & SELL & 5.6e-07 & 185383 & 0.10381448 \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_dataset_sample}
+    \end{table}
+
+    However, it is noteworthy that the Binance API does not provide information regarding the type of order, such as Market, Limit, or Stop Loss.
+    Additionally, a limitation of the dataset is that the cryptocurrency is paired with Bitcoin, rendering the data susceptible to fluctuations in the price of Bitcoin at the time of trading.
+    Therefore, it is important to mitigate the impact of this variability before conducting analyses utilizing price data.
 
     \subsection{Data Enrichment}
 	\label{subsec_met_enrichment}
