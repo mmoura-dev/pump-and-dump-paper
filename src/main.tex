@@ -236,8 +236,10 @@
 
     \subsection{Data Enrichment}
 	\label{subsec_met_enrichment}
-	
-	A modelagem da solução para a elaboração dos artefatos computacionais define os principais elementos que fazem parte da solução proposta pelo trabalho. Em um sistema de informação, por exemplo, é natural a presença de um diagrama arquitetura, diagrama de caso de uso, um diagrama de classes. Na existência de um processo importante, pode-se recorrer a um diagrama de atividades. Da mesma forma, na existência um procedimento computacional complexo, pode-se fazer valer de especificação de um algoritmo em pseudocódigo, de diagrama de sequência, dentre outros, para explicá-lo. É importante deixar claro que o foco não é volume de elementos de diagramação e diferentes tipos de modelo, mas sim a qualidade da explicação da solução.
+
+    To address the potential impact of Bitcoin price volatility on our analysis, we augmented our methodology by integrating data from the Live Coin Watch API\footnote{\url{https://www.livecoinwatch.com/tools/api}} to retrieve the Bitcoin price at the time of order creation.
+    With their API, we are able to access the price history spanning the last 8 years, with a time resolution of 15 minutes, which is enough for our analysis.
+    Specifically, we queried the API for the Bitcoin/US dollar pair throughout the duration of each dataset, enabling us to infer the price of the cryptocurrency in US dollars.
 
     \subsection{Data Preprocessing}
 	\label{subsec_met_preprocessing}
