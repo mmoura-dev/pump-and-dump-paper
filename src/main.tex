@@ -262,7 +262,7 @@
             \midrule
             2020-10-20 18:10:52 & 0.00666 & 198.069 & 34 & FALSE \\
             2020-10-20 19:10:52 & 0.00666 & 180.427 & 29 & FALSE \\
-            2020-10-20 20:10:52 & 0.00678 & 320.316 & 71 & TRUE \\
+            2020-10-20 20:10:52 & 0.00778 & 320.316 & 71 & TRUE \\
             \bottomrule
         \end{tabular}
         \label{tab_timeseries}
@@ -270,8 +270,17 @@
 
     \subsection{Anomaly Detection}
 	\label{subsec_met_anomaly_detection}
-	
-	A elaboração da solução propriamente dita apresenta um detalhamento dos elementos da solução. Pode envolver a especificação da arquitetura da solução, projeto lógico e físico da base de dados, projeto de interface gráfica, linguagem de programação adotada como os seus respectivos \emph{frameworks}. Novamente, o nível de detalhamento dos elementos da solução deve estar condizente com a explicação textual. Não é necessário apresentar todos os elementos da solução. O importante é deixar claro os elementos que valorizem a contribuição do trabalho.
+
+    Now that the time series has been generated, we can proceed to employ time series anomaly detection methods.
+    In the context of this study, the models under investigation include ARIMA, GARCH, RED, and REMD.
+    Each series is subjected to all models to identify anomalies, and the detection efficacy is evaluated utilizing the label column.
+
+    Furthermore, the models are also evaluated using soft metrics.
+    This approach is adopted due to the nature of each dataset, which pertains to a single pump-and-dump event.
+    When employing hard metrics, the potential outcomes are limited to binary values of 0 or 1 for true positives.
+    This aspect penalizes models that are inaccurate in identifying the exact event bin.
+    Conversely, these models often exhibit fewer false positives.
+    Therefore, using soft metrics allow for an evaluation of whether a model can detect the event, even if not precisely at the moment of occurrence.
 	
 	\section{Results}
 	\label{sec_aval_exp}
