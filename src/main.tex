@@ -289,7 +289,7 @@
 	The fist subsection (ref) presents XXX and the second (ref), the XXX.
 	The subsequent Subsections (ref), (ref), ... and (ref) discuss the XXX.
 
-	\subsection{Impact of time intervals}
+	\subsection{Impact of Chunk Sizes}
 	\label{subsec_result_time_interval}
 	
 	A avaliação experimental compreende uma avaliação quantitativa ou qualitativa do trabalho a partir de critérios estabelecidos para comparação.
@@ -299,7 +299,25 @@
 
 	Como em qualquer experimento, a capacidade de reprodução é fundamental para sua validade.
 	Sendo assim, é importante descrever o processo de experimentação adotados, apresentar os resultados propriamente dito, com uma síntese explicativa dos principais resultados.
-	Finalmente, devem ser apresentadas as ameaças ao estudo, \emph{i.e.}, qualquer coisa que possa tirar ou limitar a validade do experimento conduzido. 
+
+	\subsection{Comparative Analysis}
+	\label{subsec_result_comparing}
+	Finalmente, devem ser apresentadas as ameaças ao estudo, \emph{i.e.}, qualquer coisa que possa tirar ou limitar a validade do experimento conduzido.
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Comparative of Best F1 methods}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Classifier} & \textbf{Chunk size} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            Kamps (Strict) & 1 Hour & 50.1\% & 75.0\% & 60.5\% \\
+            La Morgia (RF 10 Folds) & 25 Sec & 93.1\% & 91.4\% & 92.0\% \\
+            ARIMA & 300 Sec & 2.86\% & 61.83\% & 2.90\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_comparison}
+    \end{table}
 	
 	\section{Conclusion}
 	\label{sec_conclusao}
@@ -308,8 +326,8 @@
 	
 	Apresentam-se os pontos do trabalho que merecem um maior aprofundamento de estudos. Isso possibilita a criação de novos trabalhos com estudos nesses pontos apresentados, na forma de uma continuidade das pesquisas efetuadas pelo trabalho. Os trabalhos futuros indicam, ainda, uma maturidade de pesquisa do autor do trabalho e esses pontos podem ser trabalhados, posteriormente.
 	
-	\section*{Agradecimentos}
-	Agradecimento as agências de fomento\footnote{Lembre-se de agradecer a CAPES se você tiver usado o Portal de Periódicos}.
+	\section*{Acknowledgment}
+	The authors thank the support provided by CAPES through the "Portal de Periódicos", which facilitated access to valuable resources for this research.
 	
     \bibliographystyle{apalike}
 	\bibliography{references}
