@@ -294,7 +294,14 @@
 	\subsection{Hyperparameters Overview}
 	\label{subsec_exp_hyperparams}
 	
-	A avaliação experimental compreende uma avaliação quantitativa ou qualitativa do trabalho a partir de critérios estabelecidos para comparação.
+	There are two hyperparameters that influence our experiment.
+	Firstly, the timeframe of order history analyzed, which has data from seven days before to seven days after the event.
+	However, utilizing the entire history may not be the best scenario.
+	While it provides more data, it still has only one labeled event so it also increases the likelihood of false positives.
+
+	Another important hyperparameter is the chunk size, which determines the time window used to aggregate orders when constructing the time series.
+	This parameter directly influences the quality of the results, as it defines the temporal resolution of the time series employed in the subsequent analysis.
+	Besides that, the chunk size is also influenced by the size of the timeframe of order history because it some models require at least 100 observations in the time series.
 
 	\subsection{Comprehensive Time Series Analysis}
 	\label{subsec_result_series_evals}
