@@ -306,7 +306,72 @@
 	\subsection{Comprehensive Time Series Analysis}
 	\label{subsec_result_series_evals}
 	
-	A avaliação experimental compreende uma avaliação quantitativa ou qualitativa do trabalho a partir de critérios estabelecidos para comparação.
+	Our initial analysis can be directily compared to \citet{kamps2018}.
+	We utilize the entire timeframe encompassing seven days prior to and seven days following the pump-and-dump event, with a one-hour chunk size for time series construction.
+	Notably, for each observation within a chunk, we compute: average price (USD), volume (USD), cumulative volume and the number of buy orders.
+	This essentially translates to generating and analyzing four time series for each pump-and-dump event's order history, which can be seen in the Tables \ref{tab_full_series_3600_price}, \ref{tab_full_series_3600_orders}, \ref{tab_full_series_3600_volume} and \ref{tab_full_series_3600_volume_cusum}.
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Analysis Result using the Average Price in USD for 14 days Timeframe and Chunk Size of 1 hour}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            ARIMA & 91.04\% & 1.45\% & 59.47\% & 0.28\% \\
+            GARCH & 96.93\% & 1.13\% & 15.09\% & 0.21\% \\
+            RED & 98.07\% & 6.54\% & 58.88\% & 11.77\% \\
+			REMD & 99.97\% & 14.17\% & 37.57\% & 20.58\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_full_series_3600_price}
+    \end{table}
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Analysis Result using the Number of Orders for 14 days Timeframe and Chunk Size of 1 hour}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            ARIMA & 93.41\% & 2.00\% & 60.49\% & 3.87\% \\
+			GARCH & 96.45\% & 1.01\% & 15.73\% & 1.89\% \\
+			RED & 97.80\% & 3.91\% & 38.46\% & 7.09\% \\
+			REMD & 99.61\% & 22.44\% & 31.47\% & 26.19\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_full_series_3600_orders}
+    \end{table}
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Analysis Result using the Sum Volume in USD for 14 days Timeframe and Chunk Size of 1 hour}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            ARIMA & 93.77\% & 2.17\% & 62.15\% & 4.19\% \\
+			GARCH & 98.43\% & 1.97\% & 12.62\% & 3.40\% \\
+			RED & 97.94\% & 4.83\% & 44.92\% & 8.72\% \\
+			REMD & 99.65\% & 28.08\% & 37.85\% & 32.24\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_full_series_3600_volume}
+    \end{table}
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Analysis Result using the Cumulative Sum Volume in USD for 14 days Timeframe and Chunk Size of 1 hour}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            ARIMA & 93.89\% & 2.19\% & 61.51\% & 4.22\% \\
+ 			GARCH & 99.31\% & 6.00\% & 14.78\% & 8.53\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_full_series_3600_volume_cusum}
+    \end{table}
 
 	\subsection{Impact of Chunk Sizes on Analysis Quality}
 	\label{subsec_result_time_interval}
