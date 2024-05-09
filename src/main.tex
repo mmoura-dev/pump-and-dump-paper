@@ -54,7 +54,7 @@
 		
 		Em textos científicos, as frases devem ser curtas, para não gerar ambiguidade. Pode-se dizer que um parágrafo é constituído por pelo menos três frases. Adicionalmente, pode-se dizer que cada parágrafo tem uma única ideia central, \emph{i.e.}, uma sentença  que sumariza o parágrafo. 
 		
-		O texto de um trabalho todo precisa estar encadeado \citep{zobel_writing_2015}. O encadeamento dos parágrafos é feito a partir do encadeamento de suas ideias centrais. Desta forma, a ideia central de cada parágrafo leva a ideia central do próximo e assim por diante. 
+		O texto de um trabalho todo precisa estar encadeado. O encadeamento dos parágrafos é feito a partir do encadeamento de suas ideias centrais. Desta forma, a ideia central de cada parágrafo leva a ideia central do próximo e assim por diante. 
 		
 		Em linhas gerais, qualquer parágrafo do trabalho que não apresente citação é considerado criação dos autores. A utilização de textos transcritos de alguma fonte sem a devida referência a esta fonte e seus autores pode configurar a hipótese de plágio. Assim, todas as obras citadas devem ter as referências aos seus autores e devem figurar na lista de referências do trabalho.
 	\end{resumo}
@@ -376,12 +376,48 @@
 	\subsection{Impact of Chunk Sizes on Analysis Quality}
 	\label{subsec_result_time_interval}
 
-	Como em qualquer experimento, a capacidade de reprodução é fundamental para sua validade.
-	Sendo assim, é importante descrever o processo de experimentação adotados, apresentar os resultados propriamente dito, com uma síntese explicativa dos principais resultados.
+	In the analysis of cryptocurrency market pump-and-dump events, even when using a known dataset, it is not possible to guarantee that a false positive is really not an unlabeled event.
+	To mitigate this risk while exploring different chunk sizes we use a reduced timeframe centered around the event (e.g., 12 hours pre- and post-event). 
+	This study investigated the impact of chunk size by evaluating time series generated using 5-minute and 15-minute intervals (See Table \ref{tab_full_series_900_orders}).
+	Interestingly, for anomaly detection methods susceptible to false positives (e.g., ARIMA, RED), larger chunk sizes led to significant improvement. Conversely, the REMD method achieved the best F1-score when utilizing the finer 5-minute chunk size (See Table \ref{tab_full_series_300_orders}).
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Analysis Result using the Number of Orders for 24 hours Timeframe and Chunk Size of 15 minutes}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            ARIMA & 94.87\% & 13.10\% & 69.72\% & 22.05\% \\
+			GARCH & 95.32\% & 1.85\% & 6.73\% & 2.90\% \\
+			RED & 97.84\% & 19.55\% & 34.56\% & 24.97\% \\
+			REMD & 98.93\% & 48.72\% & 58.41\% & 53.12\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_full_series_900_orders}
+    \end{table}
+
+	\begin{table}[!ht]
+        \centering
+        \caption{Analysis Result using the Number of Orders for 24 hours Timeframe and Chunk Size of 5 minutes}
+        \begin{tabular}{lccccc}
+            \toprule
+            \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            ARIMA & 93.88\% & 3.42\% & 61.07\% & 6.47\% \\
+			GARCH & 96.03\% & 0.73\% & 7.72\% & 1.33\% \\
+			RED & 98.10\% & 6.60\% & 33.89\% & 11.04\% \\
+			REMD & 99.71\% & 57.64\% & 60.74\% & 59.14\% \\
+            \bottomrule
+        \end{tabular}
+        \label{tab_full_series_300_orders}
+    \end{table}
 
 	\subsection{Comparative Analysis}
 	\label{subsec_result_comparing}
-	Finalmente, devem ser apresentadas as ameaças ao estudo, \emph{i.e.}, qualquer coisa que possa tirar ou limitar a validade do experimento conduzido.
+
+	We leverage the results reported by \citet{lamorgia2020} from the \citet{kamps2018} study, as we utilize the same dataset for evaluation purposes.
+	Specifically, we draw comparisons between our findings and those presented in \citet{kamps2018} study to assess the efficacy of our methodology in detecting pump-and-dump schemes in cryptocurrency markets in the same conditions of timeframe and chunk size (See Table \ref{tab_comparison}).
 
 	\begin{table}[!ht]
         \centering
@@ -392,7 +428,8 @@
             \midrule
             Kamps (Strict) & 1 Hour & 50.1\% & 75.0\% & 60.5\% \\
             La Morgia (RF 10 Folds) & 25 Sec & 93.1\% & 91.4\% & 92.0\% \\
-            ARIMA & 300 Sec & 2.86\% & 61.83\% & 2.90\% \\
+			REMD (14 days Timeframe)& 1 Hour & 14.17\% & 37.57\% & 20.58\% \\
+            REMD (24h Timeframe) & 300 Sec & 57.64\% & 60.74\% & 59.14\% \\
             \bottomrule
         \end{tabular}
         \label{tab_comparison}
@@ -401,9 +438,7 @@
 	\section{Conclusion}
 	\label{sec_conclusao}
 	
-	A conclusão é a finalização do trabalho e indica as conclusões obtidas com o desenvolvimento do trabalho, sejam elas positivas ou negativas. Nas conclusões, analisa-se o que era desejado (definido na introdução com os objetivos), comparando com o alcançado pelo trabalho, descrevendo como os objetivos foram alcançados e o porquê de algum objetivo não ter sido alcançado. Destacam-se também as contribuições do trabalho, incluindo os benefícios e inovações trazidas pelo trabalho.
-	
-	Apresentam-se os pontos do trabalho que merecem um maior aprofundamento de estudos. Isso possibilita a criação de novos trabalhos com estudos nesses pontos apresentados, na forma de uma continuidade das pesquisas efetuadas pelo trabalho. Os trabalhos futuros indicam, ainda, uma maturidade de pesquisa do autor do trabalho e esses pontos podem ser trabalhados, posteriormente.
+	In conclusion, our study highlights the significance of further research in the field of anomaly detection for pump-and-dump schemes in cryptocurrency markets. While our analysis has provided valuable insights into the impact of chunk sizes on detection performance, there remains ample opportunity for exploration. Future investigations could delve into a broader range of chunk sizes to comprehensively understand their effects on analysis quality. Moreover, the development of methodologies for online detection of pump-and-dump schemes represents a promising avenue for future research, enabling real-time monitoring and intervention. Additionally, the integration of multivariate time series analysis techniques could enhance detection accuracy by leveraging relationships between multiple variables. These avenues of inquiry hold promise for advancing the state-of-the-art in cryptocurrency market surveillance and mitigating the adverse effects of market manipulation.
 	
 	\section*{Acknowledgment}
 	The authors thank the support provided by CAPES through the "Portal de Periódicos", which facilitated access to valuable resources for this research.
